@@ -1,8 +1,8 @@
 module.exports = {
-   entry: './main.js',
+   entry: './app/main.js',
    output: {
-      path: './',
-      filename: 'index.js'
+      path: './build',
+      filename: 'bundle.js'
    },
    devServer: {
       inline: true,
@@ -11,7 +11,7 @@ module.exports = {
    module: {
       loaders: [
          {
-            test: /\.js$/,
+            test: /\.jsx?$/,
             exclude: /node_modules/,
             loader: 'babel',
             query: {

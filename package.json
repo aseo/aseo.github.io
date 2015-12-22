@@ -2,10 +2,13 @@
   "name": "aseo.github.io",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app/main.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build",
+    "deploy": "NODE_ENV=production webpack -p --config webpack.production.config.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,10 @@
     "url": "https://github.com/aseo/aseo.github.io/issues"
   },
   "homepage": "https://github.com/aseo/aseo.github.io#readme",
+  "devDependencies": {
+    "webpack": "^1.4.13",
+    "webpack-dev-server": "^1.6.6"
+  },
   "dependencies": {
     "babel-core": "^6.3.21",
     "babel-loader": "^6.2.0",
