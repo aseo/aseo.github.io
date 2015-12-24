@@ -1,0 +1,28 @@
+/*
+
+COLORS{
+   main: #33495f;
+}
+
+*/
+html, body, #wrapper, #main{
+   width: 100%;
+   height: 100%;
+   margin: 0;
+   color: #ffffff;
+}
+
+#current{
+   background-color: #33495f;
+   height: 100%;
+}
+
+#daily{
+   background-color: #6b7e90;
+   height: 100%;
+}
+
+#icon-current{
+   height: 225px;
+   width: 225px;
+}

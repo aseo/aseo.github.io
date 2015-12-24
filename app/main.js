@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CurrentTemp from './CurrentTemp.jsx';
+import Main from './Main.jsx';
+import './style/main.css';
+import './style/bootstrap/css/bootstrap.min.css';
 
 main();
 
 function main() {
-   ReactDOM.render(<CurrentTemp />, document.getElementById('current'));
+   ReactDOM.render(<Main />, document.getElementById('wrapper'));
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-class CurrentTemp extends React.Component {
+import { Button } from 'react-bootstrap';
+class Current extends React.Component {
 
    updateWeather(event){
       console.log("button clicked");
@@ -31,11 +32,15 @@ class CurrentTemp extends React.Component {
 
    render(){
       return (
-         <div>Hellooooo
-            <button id="btnUpdate" onClick={this.updateWeather}>Weather Upupdate</button>
+         <div id="current" className="col-md-7">
+           {/* <Button bsStyle="success" bsSize="small" id="btnUpdate" onClick={this.updateWeather}>
+              Weather Updated
+            </Button> */}
+            <img id="icon-current" src="http://aseo.github.io/build/app/img/Sun-512.png" />
+            Icons provided by https://icons8.com
          </div>
       );
    }
 }
 //ReactDOM.render(<CurrentTemp />, document.getElementById('current'));
-export default CurrentTemp
+export default Current
