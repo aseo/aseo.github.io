@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Current from './Current.jsx';
-import Daily from './Daily.jsx';
-class Main extends React.Component {
+import Forecast from './Forecast.jsx';
+import Header from './Header.jsx';
+var Main = React.createClass ({
 
-   render(){
+   render:function(){
       return (
-         <div className="row" id="main">
-            <Current />
-            <Daily />
+         <div id="main">
+            <Header />
+            <div id="content" className="row">
+               <Current source="localhost:8080" />
+               <Forecast />
+            </div>
          </div>
       );
    }
-}
+});
 //ReactDOM.render(<CurrentTemp />, document.getElementById('current'));
 export default Main

@@ -1,28 +1,134 @@
 /*
 
 COLORS{
-   main: #33495f;
+   main: #33495f
+   day1: #6b7e90;
+   day2: #496076
+   day3: #1f374e
+   day4: #0f253a
 }
 
 */
+.no-margin{
+   margin: 0;
+}
+
+.display-inline{
+   display: inline;
+}
+
 html, body, #wrapper, #main{
    width: 100%;
    height: 100%;
    margin: 0;
    color: #ffffff;
+   background-color: #33495f;
+}
+
+#header{
+   width: 100%;
+   height: 40px;
+   margin: 0;
+   background-color: #33495f;
+}
+
+#header-current > div{
+   padding: 0;
+}
+
+.p-header{
+   font-weight: 100;
+   letter-spacing: 1px;
+   padding: 12px;
+   font-size: 12px;
+   margin-bottom: 0;
+}
+
+#header-forecast{
+   background-color: #33495f;
+   padding-top: 9px;
+}
+
+#header-forecast > p {display: inline;}
+
+#p-divider{padding-left: 0; padding-right:0;}
+
+#content{
+   width: 100%;
+   margin: 0;
+   position: absolute;
+   top: 40px;
+   bottom: 0;
+   overflow: auto;
 }
 
 #current{
    background-color: #33495f;
    height: 100%;
+   text-align: center;
 }
 
-#daily{
+.precip-curr {font-size: 18px; margin-top: -10px;}
+.temp-curr {font-size: 50px; margin-top: 50px;}
+.feels-curr {font-size: 16px; font-weight: 100; letter-spacing: 1px;}
+.app-temp-curr {font-size: 50px;}
+.quote-curr {font-size: 35px; font-weight: 100; font-style: italic; letter-spacing: 2px; margin-top: 50px;}
+
+#icon-current{
+   height: 200px;
+   width: 200px;
+}
+
+
+/****** Forecast *****/
+#forecast{
    background-color: #6b7e90;
+   height: 100%;
+   padding: 0;
+}
+
+#content-forecast{
    height: 100%;
 }
 
-#icon-current{
-   height: 225px;
-   width: 225px;
+.daily{
+   width: 100%;
+   height: 25%;
+   min-height: 158px;
+   margin: 0;
+   padding-left: 30px;
 }
+
+.p-day{
+   font-size: 45px;
+   margin-top: 45px;
+}
+
+.day-icon{ padding-top: 25px; }
+
+.icon-daily{ width: 80px; }
+
+.p-temp{
+   font-weight: 100;
+   font-size: 25px;
+   letter-spacing: 1px;
+   padding: 10px;
+}
+
+.p-temp-hl{
+   font-weight: 400;
+}
+
+/*.p-temp-feel{
+   font-size: 20px;
+}
+*/
+.day-temp-h, .day-temp-l{
+   margin-top: 28px;
+   padding-right: 30px;
+}
+
+#day1 {background-color: #6b7e90; margin:0;}
+#day2 {background-color: #496076; margin:0;}
+#day3 {background-color: #1f374e; margin:0;}
+#day4 {background-color: #0f253a; margin:0;}
