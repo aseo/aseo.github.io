@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button } from 'react-bootstrap';
+import HeaderCurrent from './HeaderCurrent.jsx';
 var $ = require ('jquery');
 var Current = React.createClass ({
 
@@ -50,19 +51,21 @@ var Current = React.createClass ({
 
   render:function() {
     return (
-       <div id="current" className="col-md-7">
-         {/* <Button bsStyle="success" bsSize="small" id="btnUpdate" onClick={this.updateWeather}>
-            Weather Updated
-          </Button> */}
-
-          <div id="content-current">
-            <img id="icon-current" src="https://api.icons8.com/download/02b49eb213f67d9fb2c8753c368b275d2ef4c1c8/Color/PNG/512/Weather/sun-512.png" title="Sun" />
-            <p className="precip-curr">{this.state.precip}%</p>
-            <p className="temp-curr">{this.state.tempCurrent}</p>
-            <p className="feels-curr">feels like</p>
-            <p className="app-temp-curr">{this.state.tempApparent}</p>
-            <p className="quote-curr">"hello, sunshine"</p>
+      <div>
+        <div id="current" className="col-sm-7">
+           {/* <Button bsStyle="success" bsSize="small" id="btnUpdate" onClick={this.updateWeather}>
+              Weather Updated
+            </Button> */}
+            <HeaderCurrent />
+            <div id="content-current">
+              <img id="icon-current" src="https://api.icons8.com/download/02b49eb213f67d9fb2c8753c368b275d2ef4c1c8/Color/PNG/512/Weather/sun-512.png" title="Sun" />
+              <p className="precip-curr">{this.state.precip}%</p>
+              <p className="temp-curr">{this.state.tempCurrent}</p>
+              <p className="feels-curr">feels like</p>
+              <p className="app-temp-curr">{this.state.tempApparent}</p>
+              <p className="quote-curr">"hello, sunshine"</p>
             </div>
+         </div>
        </div>
     );
   }

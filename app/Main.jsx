@@ -7,8 +7,7 @@ var Main = React.createClass ({
 
    render:function(){
       return (
-         <div id="main">
-            <Header />
+         <div id="main" className="container-fluid">
             <div id="content" className="row">
                <Current source="localhost:8080" />
                <Forecast />
