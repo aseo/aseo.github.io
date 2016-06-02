@@ -19695,8 +19695,7 @@
 	   render: function render() {
 	      return _react2.default.createElement(
 	         'div',
-	         { id: 'main' },
-	         _react2.default.createElement(_Header2.default, null),
+	         { id: 'main', className: 'container-fluid' },
 	         _react2.default.createElement(
 	            'div',
 	            { id: 'content', className: 'row' },
@@ -19786,36 +19785,41 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      { id: 'current', className: 'col-md-7' },
+	      null,
 	      _react2.default.createElement(
 	        'div',
-	        { id: 'content-current' },
-	        _react2.default.createElement('img', { id: 'icon-current', src: 'https://api.icons8.com/download/02b49eb213f67d9fb2c8753c368b275d2ef4c1c8/Color/PNG/512/Weather/sun-512.png', title: 'Sun' }),
+	        { id: 'current', className: 'col-sm-7' },
+	        _react2.default.createElement(_HeaderCurrent2.default, null),
 	        _react2.default.createElement(
-	          'p',
-	          { className: 'precip-curr' },
-	          this.state.precip,
-	          '%'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          { className: 'temp-curr' },
-	          this.state.tempCurrent
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          { className: 'feels-curr' },
-	          'feels like'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          { className: 'app-temp-curr' },
-	          this.state.tempApparent
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          { className: 'quote-curr' },
-	          '"hello, sunshine"'
+	          'div',
+	          { id: 'content-current' },
+	          _react2.default.createElement('img', { id: 'icon-current', src: 'https://api.icons8.com/download/02b49eb213f67d9fb2c8753c368b275d2ef4c1c8/Color/PNG/512/Weather/sun-512.png', title: 'Sun' }),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'precip-curr' },
+	            this.state.precip,
+	            '%'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'temp-curr' },
+	            this.state.tempCurrent
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'feels-curr' },
+	            'feels like'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'app-temp-curr' },
+	            this.state.tempApparent
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'quote-curr' },
+	            '"hello, sunshine"'
+	          )
 	        )
 	      )
 	    );
@@ -36799,10 +36803,10 @@
 	      { id: 'header', className: 'row no-margin' },
 	      _react2.default.createElement(
 	        'div',
-	        { id: 'header-current', className: 'col-md-7' },
+	        { id: 'header-current', className: 'row' },
 	        _react2.default.createElement(
 	          'div',
-	          { id: 'time-updated', className: 'col-md-6 text-left' },
+	          { id: 'time-updated', className: 'col-xs-6 text-left' },
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'p-header' },
@@ -36811,7 +36815,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { id: 'city-current', className: 'col-md-6 text-right' },
+	          { id: 'city-current', className: 'col-xs-6 text-right' },
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'p-header' },
@@ -46695,15 +46699,19 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      { id: 'forecast', className: 'col-md-5' },
-	      _react2.default.createElement(_HeaderForecast2.default, null),
+	      null,
 	      _react2.default.createElement(
 	        'div',
-	        { id: 'content-forecast' },
-	        _react2.default.createElement(_Daily2.default, { day: 'day1' }),
-	        _react2.default.createElement(_Daily2.default, { day: 'day2' }),
-	        _react2.default.createElement(_Daily2.default, { day: 'day3' }),
-	        _react2.default.createElement(_Daily2.default, { day: 'day4' })
+	        { id: 'forecast', className: 'col-sm-5' },
+	        _react2.default.createElement(_HeaderForecast2.default, null),
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'content-forecast' },
+	          _react2.default.createElement(_Daily2.default, { day: 'day1' }),
+	          _react2.default.createElement(_Daily2.default, { day: 'day2' }),
+	          _react2.default.createElement(_Daily2.default, { day: 'day3' }),
+	          _react2.default.createElement(_Daily2.default, { day: 'day4' })
+	        )
 	      )
 	    );
 	  }
@@ -46737,10 +46745,10 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      { className: 'daily row', id: this.props.day },
+	      { className: 'daily row col-xs-3 col-sm-12', id: this.props.day },
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'day col-md-3 text-center' },
+	        { className: 'day col-sm-3 text-center' },
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'p-day' },
@@ -46749,7 +46757,7 @@
 	      ),
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'day-icon col-md-3 text-center' },
+	        { className: 'day-icon col-sm-3 text-center' },
 	        _react2.default.createElement('img', { className: 'icon-daily', src: 'https://api.icons8.com/download/02b49eb213f67d9fb2c8753c368b275d2ef4c1c8/Color/PNG/512/Weather/sun-512.png', title: 'Sun' }),
 	        _react2.default.createElement(
 	          'p',
@@ -46759,7 +46767,7 @@
 	      ),
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'day-temp col-md-6' },
+	        { className: 'day-temp col-sm-6' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'day-temp-h text-center' },
@@ -46966,7 +46974,7 @@
 
 
 	// module
-	exports.push([module.id, "/*\n\nCOLORS{\n   main: #33495f\n   day1: #6b7e90;\n   day2: #496076\n   day3: #1f374e\n   day4: #0f253a\n}\n\n*/\n.no-margin{\n   margin: 0;\n}\n\n.display-inline{\n   display: inline;\n}\n\nhtml, body, #wrapper, #main{\n   width: 100%;\n   height: 100%;\n   margin: 0;\n   color: #ffffff;\n   background-color: #33495f;\n}\n\n#header{\n   width: 100%;\n   height: 40px;\n   margin: 0;\n   background-color: #33495f;\n}\n\n#header-current > div{\n   padding: 0;\n}\n\n.p-header{\n   font-weight: 100;\n   letter-spacing: 1px;\n   padding: 12px;\n   font-size: 12px;\n   margin-bottom: 0;\n}\n\n#header-forecast{\n   background-color: #33495f;\n   padding-top: 9px;\n}\n\n#header-forecast > p {display: inline;}\n\n#p-divider{padding-left: 0; padding-right:0;}\n\n#content{\n   width: 100%;\n   margin: 0;\n   position: absolute;\n   top: 40px;\n   bottom: 0;\n   overflow: auto;\n}\n\n#current{\n   background-color: #33495f;\n   height: 100%;\n   text-align: center;\n}\n\n.precip-curr {font-size: 18px; margin-top: -10px;}\n.temp-curr {font-size: 50px; margin-top: 50px;}\n.feels-curr {font-size: 16px; font-weight: 100; letter-spacing: 1px;}\n.app-temp-curr {font-size: 50px;}\n.quote-curr {font-size: 35px; font-weight: 100; font-style: italic; letter-spacing: 2px; margin-top: 50px;}\n\n#icon-current{\n   height: 200px;\n   width: 200px;\n}\n\n\n/****** Forecast *****/\n#forecast{\n   background-color: #6b7e90;\n   height: 100%;\n   padding: 0;\n}\n\n#content-forecast{\n   height: 100%;\n}\n\n.daily{\n   width: 100%;\n   height: 25%;\n   min-height: 158px;\n   margin: 0;\n   padding-left: 30px;\n}\n\n.p-day{\n   font-size: 45px;\n   margin-top: 45px;\n}\n\n.day-icon{ padding-top: 25px; }\n\n.icon-daily{ width: 80px; }\n\n.p-temp{\n   font-weight: 100;\n   font-size: 25px;\n   letter-spacing: 1px;\n   padding: 10px;\n}\n\n.p-temp-hl{\n   font-weight: 400;\n}\n\n/*.p-temp-feel{\n   font-size: 20px;\n}\n*/\n.day-temp-h, .day-temp-l{\n   margin-top: 28px;\n   padding-right: 30px;\n}\n\n#day1 {background-color: #6b7e90; margin:0;}\n#day2 {background-color: #496076; margin:0;}\n#day3 {background-color: #1f374e; margin:0;}\n#day4 {background-color: #0f253a; margin:0;}", ""]);
+	exports.push([module.id, "/*\n\nCOLORS{\n   main: #33495f\n   day1: #6b7e90;\n   day2: #496076\n   day3: #1f374e\n   day4: #0f253a\n}\n\n*/\n.no-margin{\n   margin: 0;\n}\n\n.display-inline{\n   display: inline;\n}\n\nhtml, body, #wrapper, #main{\n   width: 100%;\n   height: 100%;\n   margin: 0;\n   color: #ffffff;\n   background-color: #33495f;\n}\n\n#main{\n   padding-left: 0px;\n   padding-right: 0px;\n}\n\n#header{\n   width: 100%;\n   height: 40px;\n   margin: 0;\n   /*background-color: #33495f;*/\n}\n\n#header-current > div{\n   padding: 0;\n}\n\n.p-header{\n   font-weight: 100;\n   letter-spacing: 1px;\n   padding: 12px;\n   font-size: 12px;\n   margin-bottom: 0;\n}\n\n#header-forecast{\n   padding-top: 9px;\n}\n\n#header-forecast > p {display: inline;}\n\n#p-divider{padding-left: 0; padding-right:0;}\n\n#content{\n   width: 100%;\n   margin: 0;\n/*   position: absolute;\n   top: 40px;*/\n   height: 100vh;\n   bottom: 0;\n   overflow: auto;\n}\n\n#current{\n   background-color: #33495f;\n   height: 100vh;\n   text-align: center;\n}\n\n#content-current{\n   height: calc(100vh - 40px);\n}\n\n.precip-curr {font-size: 18px; margin-top: -10px;}\n.temp-curr {font-size: 50px; margin-top: 50px;}\n.feels-curr {font-size: 16px; font-weight: 100; letter-spacing: 1px;}\n.app-temp-curr {font-size: 50px;}\n.quote-curr {font-size: 35px; font-weight: 100; font-style: italic; letter-spacing: 2px; margin-top: 50px;}\n\n#icon-current{\n   height: 200px;\n   width: 200px;\n}\n\n\n/****** Forecast *****/\n#forecast{\n   background-color: #6b7e90;\n   height: 100vh;\n   padding: 0;\n}\n\n#content-forecast{\n   height: calc(100vh - 40px);\n}\n\n.daily{\n   width: 100%;\n   height: 25%;\n   min-height: 158px;\n   margin: 0;\n   padding-left: 30px;\n}\n\n.p-day{\n   font-size: 45px;\n   margin-top: 45px;\n}\n\n.day-icon{ padding-top: 25px; }\n\n.icon-daily{ width: 80px; }\n\n.p-temp{\n   font-weight: 100;\n   font-size: 25px;\n   letter-spacing: 1px;\n   padding: 10px;\n}\n\n.p-temp-hl{\n   font-weight: 400;\n}\n\n/*.p-temp-feel{\n   font-size: 20px;\n}\n*/\n.day-temp-h, .day-temp-l{\n   margin-top: 28px;\n   padding-right: 30px;\n}\n\n#day1 {background-color: #6b7e90; margin:0;}\n#day2 {background-color: #496076; margin:0;}\n#day3 {background-color: #1f374e; margin:0;}\n#day4 {background-color: #0f253a; margin:0;}\n\n@media screen and (max-width: 768px) {\n   .daily {height: 100%;}\n   #forecast {height: 70vh;}\n   #content-forecast {height: calc(70vh - 40px);}\n}", ""]);
 
 	// exports
 
