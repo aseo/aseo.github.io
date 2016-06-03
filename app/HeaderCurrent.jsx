@@ -7,7 +7,7 @@ var HeaderCurrent = React.createClass ({
       <div id="header" className="row no-margin">
         <div id="header-current" className="row">
           <div id="time-updated" className="col-xs-6 text-left">
-            <p className="p-header">Last updated 6:00pm</p>
+            <p className="p-header">Last updated 2:00pm</p>
           </div>
           <div id="city-current" className="col-xs-6 text-right">
             <p className="p-header">Waterloo, ON</p>

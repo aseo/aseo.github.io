@@ -43,9 +43,9 @@ var Current = React.createClass ({
 
   getInitialState: function() {
     return {
-      precip: 0,
-      tempCurrent: 2,
-      tempApparent: 0
+      precip: 10,
+      tempCurrent: 23,
+      tempApparent: 26
     };
   },
 

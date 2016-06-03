@@ -115,11 +115,25 @@ html, body, #wrapper, #main{
 
 .day-icon{ padding-top: 25px; }
 
-.icon-daily{ width: 80px; }
+.img-daily{ 
+   width: 80px; 
+   /* http://stackoverflow.com/questions/29439321/horizontally-align-image-thats-bigger-than-its-parent-div */
+   display: block;
+   margin: auto;
+   max-width: none;
+   position: absolute;
+   left: 50%;
+   -webkit-transform: translateX(-50%);
+   transform: translateX(-50%);
+}
+
+.img-daily-wrapper{
+   height: 80px;
+}
 
 .p-temp{
    font-weight: 100;
-   font-size: 25px;
+   font-size: 22px;
    letter-spacing: 1px;
    padding: 10px;
 }
@@ -133,8 +147,8 @@ html, body, #wrapper, #main{
 }
 */
 .day-temp-h, .day-temp-l{
-   margin-top: 28px;
-   padding-right: 30px;
+   margin-top: 32px;
+   padding-right: 28px;
 }
 
 #day1 {background-color: #6b7e90; margin:0;}
@@ -142,8 +156,31 @@ html, body, #wrapper, #main{
 #day3 {background-color: #1f374e; margin:0;}
 #day4 {background-color: #0f253a; margin:0;}
 
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+
+
 @media screen and (max-width: 768px) {
-   .daily {height: 100%;}
-   #forecast {height: 70vh;}
-   #content-forecast {height: calc(70vh - 40px);}
+   .daily {
+      height: 100%;
+   }
+
+   .img-daily{
+      width: 60px;
+   }
+   .img-daily-wrapper{
+      height: 60x;
+   }
+   #forecast {height: 65vh;}
+   #content-forecast {height: calc(65vh - 40px);}
+   .p-day{font-size: 35px;}
+   .p-temp{
+      font-size: 18px;
+      padding: 3px;
+   }
+   .day-temp-h, .day-temp-l{
+      padding-right: 0px;
+   }
 }

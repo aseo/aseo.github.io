@@ -19776,9 +19776,9 @@
 
 	  getInitialState: function getInitialState() {
 	    return {
-	      precip: 0,
-	      tempCurrent: 2,
-	      tempApparent: 0
+	      precip: 10,
+	      tempCurrent: 23,
+	      tempApparent: 26
 	    };
 	  },
 
@@ -36810,7 +36810,7 @@
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'p-header' },
-	            'Last updated 6:00pm'
+	            'Last updated 2:00pm'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -46745,7 +46745,7 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      { className: 'daily row col-xs-3 col-sm-12', id: this.props.day },
+	      { className: 'daily row col-xs-3 col-sm-12 no-gutter', id: this.props.day },
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'day col-sm-3 text-center' },
@@ -46758,7 +46758,11 @@
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'day-icon col-sm-3 text-center' },
-	        _react2.default.createElement('img', { className: 'icon-daily', src: 'https://api.icons8.com/download/02b49eb213f67d9fb2c8753c368b275d2ef4c1c8/Color/PNG/512/Weather/sun-512.png', title: 'Sun' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'img-daily-wrapper' },
+	          _react2.default.createElement('img', { className: 'img-daily', src: 'https://api.icons8.com/download/02b49eb213f67d9fb2c8753c368b275d2ef4c1c8/Color/PNG/512/Weather/sun-512.png', title: 'Sun' })
+	        ),
 	        _react2.default.createElement(
 	          'p',
 	          null,
@@ -46779,12 +46783,12 @@
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'p-temp display-inline' },
-	            '4'
+	            '27'
 	          ),
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'p-temp display-inline p-temp-feel' },
-	            '(2)'
+	            '(28)'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -46798,12 +46802,12 @@
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'p-temp display-inline' },
-	            '2'
+	            '21'
 	          ),
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'p-temp display-inline p-temp-feel' },
-	            '(0)'
+	            '(19)'
 	          )
 	        )
 	      )
@@ -46974,7 +46978,7 @@
 
 
 	// module
-	exports.push([module.id, "/*\n\nCOLORS{\n   main: #33495f\n   day1: #6b7e90;\n   day2: #496076\n   day3: #1f374e\n   day4: #0f253a\n}\n\n*/\n.no-margin{\n   margin: 0;\n}\n\n.display-inline{\n   display: inline;\n}\n\nhtml, body, #wrapper, #main{\n   width: 100%;\n   height: 100%;\n   margin: 0;\n   color: #ffffff;\n   background-color: #33495f;\n}\n\n#main{\n   padding-left: 0px;\n   padding-right: 0px;\n}\n\n#header{\n   width: 100%;\n   height: 40px;\n   margin: 0;\n   /*background-color: #33495f;*/\n}\n\n#header-current > div{\n   padding: 0;\n}\n\n.p-header{\n   font-weight: 100;\n   letter-spacing: 1px;\n   padding: 12px;\n   font-size: 12px;\n   margin-bottom: 0;\n}\n\n#header-forecast{\n   padding-top: 9px;\n}\n\n#header-forecast > p {display: inline;}\n\n#p-divider{padding-left: 0; padding-right:0;}\n\n#content{\n   width: 100%;\n   margin: 0;\n/*   position: absolute;\n   top: 40px;*/\n   height: 100vh;\n   bottom: 0;\n   overflow: auto;\n}\n\n#current{\n   background-color: #33495f;\n   height: 100vh;\n   text-align: center;\n}\n\n#content-current{\n   height: calc(100vh - 40px);\n}\n\n.precip-curr {font-size: 18px; margin-top: -10px;}\n.temp-curr {font-size: 50px; margin-top: 50px;}\n.feels-curr {font-size: 16px; font-weight: 100; letter-spacing: 1px;}\n.app-temp-curr {font-size: 50px;}\n.quote-curr {font-size: 35px; font-weight: 100; font-style: italic; letter-spacing: 2px; margin-top: 50px;}\n\n#icon-current{\n   height: 200px;\n   width: 200px;\n}\n\n\n/****** Forecast *****/\n#forecast{\n   background-color: #6b7e90;\n   height: 100vh;\n   padding: 0;\n}\n\n#content-forecast{\n   height: calc(100vh - 40px);\n}\n\n.daily{\n   width: 100%;\n   height: 25%;\n   min-height: 158px;\n   margin: 0;\n   padding-left: 30px;\n}\n\n.p-day{\n   font-size: 45px;\n   margin-top: 45px;\n}\n\n.day-icon{ padding-top: 25px; }\n\n.icon-daily{ width: 80px; }\n\n.p-temp{\n   font-weight: 100;\n   font-size: 25px;\n   letter-spacing: 1px;\n   padding: 10px;\n}\n\n.p-temp-hl{\n   font-weight: 400;\n}\n\n/*.p-temp-feel{\n   font-size: 20px;\n}\n*/\n.day-temp-h, .day-temp-l{\n   margin-top: 28px;\n   padding-right: 30px;\n}\n\n#day1 {background-color: #6b7e90; margin:0;}\n#day2 {background-color: #496076; margin:0;}\n#day3 {background-color: #1f374e; margin:0;}\n#day4 {background-color: #0f253a; margin:0;}\n\n@media screen and (max-width: 768px) {\n   .daily {height: 100%;}\n   #forecast {height: 70vh;}\n   #content-forecast {height: calc(70vh - 40px);}\n}", ""]);
+	exports.push([module.id, "/*\n\nCOLORS{\n   main: #33495f\n   day1: #6b7e90;\n   day2: #496076\n   day3: #1f374e\n   day4: #0f253a\n}\n\n*/\n.no-margin{\n   margin: 0;\n}\n\n.display-inline{\n   display: inline;\n}\n\nhtml, body, #wrapper, #main{\n   width: 100%;\n   height: 100%;\n   margin: 0;\n   color: #ffffff;\n   background-color: #33495f;\n}\n\n#main{\n   padding-left: 0px;\n   padding-right: 0px;\n}\n\n#header{\n   width: 100%;\n   height: 40px;\n   margin: 0;\n   /*background-color: #33495f;*/\n}\n\n#header-current > div{\n   padding: 0;\n}\n\n.p-header{\n   font-weight: 100;\n   letter-spacing: 1px;\n   padding: 12px;\n   font-size: 12px;\n   margin-bottom: 0;\n}\n\n#header-forecast{\n   padding-top: 9px;\n}\n\n#header-forecast > p {display: inline;}\n\n#p-divider{padding-left: 0; padding-right:0;}\n\n#content{\n   width: 100%;\n   margin: 0;\n/*   position: absolute;\n   top: 40px;*/\n   height: 100vh;\n   bottom: 0;\n   overflow: auto;\n}\n\n#current{\n   background-color: #33495f;\n   height: 100vh;\n   text-align: center;\n}\n\n#content-current{\n   height: calc(100vh - 40px);\n}\n\n.precip-curr {font-size: 18px; margin-top: -10px;}\n.temp-curr {font-size: 50px; margin-top: 50px;}\n.feels-curr {font-size: 16px; font-weight: 100; letter-spacing: 1px;}\n.app-temp-curr {font-size: 50px;}\n.quote-curr {font-size: 35px; font-weight: 100; font-style: italic; letter-spacing: 2px; margin-top: 50px;}\n\n#icon-current{\n   height: 200px;\n   width: 200px;\n}\n\n\n/****** Forecast *****/\n#forecast{\n   background-color: #6b7e90;\n   height: 100vh;\n   padding: 0;\n}\n\n#content-forecast{\n   height: calc(100vh - 40px);\n}\n\n.daily{\n   width: 100%;\n   height: 25%;\n   min-height: 158px;\n   margin: 0;\n   padding-left: 30px;\n}\n\n.p-day{\n   font-size: 45px;\n   margin-top: 45px;\n}\n\n.day-icon{ padding-top: 25px; }\n\n.img-daily{ \n   width: 80px; \n   /* http://stackoverflow.com/questions/29439321/horizontally-align-image-thats-bigger-than-its-parent-div */\n   display: block;\n   margin: auto;\n   max-width: none;\n   position: absolute;\n   left: 50%;\n   -webkit-transform: translateX(-50%);\n   transform: translateX(-50%);\n}\n\n.img-daily-wrapper{\n   height: 80px;\n}\n\n.p-temp{\n   font-weight: 100;\n   font-size: 22px;\n   letter-spacing: 1px;\n   padding: 10px;\n}\n\n.p-temp-hl{\n   font-weight: 400;\n}\n\n/*.p-temp-feel{\n   font-size: 20px;\n}\n*/\n.day-temp-h, .day-temp-l{\n   margin-top: 32px;\n   padding-right: 28px;\n}\n\n#day1 {background-color: #6b7e90; margin:0;}\n#day2 {background-color: #496076; margin:0;}\n#day3 {background-color: #1f374e; margin:0;}\n#day4 {background-color: #0f253a; margin:0;}\n\n.no-gutter > [class*='col-'] {\n    padding-right:0;\n    padding-left:0;\n}\n\n\n@media screen and (max-width: 768px) {\n   .daily {\n      height: 100%;\n   }\n\n   .img-daily{\n      width: 60px;\n   }\n   .img-daily-wrapper{\n      height: 60x;\n   }\n   #forecast {height: 65vh;}\n   #content-forecast {height: calc(65vh - 40px);}\n   .p-day{font-size: 35px;}\n   .p-temp{\n      font-size: 18px;\n      padding: 3px;\n   }\n   .day-temp-h, .day-temp-l{\n      padding-right: 0px;\n   }\n}", ""]);
 
 	// exports
 
