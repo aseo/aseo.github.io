@@ -173,8 +173,8 @@ html, body, #wrapper, #main{
    .img-daily-wrapper{
       height: 60x;
    }
-   #forecast {height: 65vh;}
-   #content-forecast {height: calc(65vh - 40px);}
+   #forecast {height: 75vh;}
+   #content-forecast {height: calc(75vh - 40px);}
    .p-day{font-size: 35px;}
    .p-temp{
       font-size: 14px;
