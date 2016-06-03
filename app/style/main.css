@@ -148,7 +148,7 @@ html, body, #wrapper, #main{
 */
 .day-temp-h, .day-temp-l{
    margin-top: 32px;
-   padding-right: 28px;
+   padding-right: 22px;
 }
 
 #day1 {background-color: #6b7e90; margin:0;}
@@ -177,10 +177,15 @@ html, body, #wrapper, #main{
    #content-forecast {height: calc(65vh - 40px);}
    .p-day{font-size: 35px;}
    .p-temp{
-      font-size: 18px;
+      font-size: 14px;
       padding: 3px;
    }
    .day-temp-h, .day-temp-l{
       padding-right: 0px;
    }
+
+   .no-gutter-mobile > [class*='col-'] {
+   padding-right:0;
+    padding-left:0; 
+}
 }

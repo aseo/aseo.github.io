@@ -9,7 +9,7 @@ var Forecast = React.createClass ({
       <div>
         <div id="forecast" className="col-sm-5">
           <HeaderForecast />
-          <div id="content-forecast">
+          <div id="content-forecast" className="no-gutter-mobile">
             <Daily day="day1" />
             <Daily day="day2" />
             <Daily day="day3" />
