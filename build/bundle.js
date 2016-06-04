@@ -67,7 +67,12 @@
 	main();
 
 	function main() {
-	   _reactDom2.default.render(_react2.default.createElement(_Main2.default, null), document.getElementById('wrapper'));
+
+	   var dailyData = [{ id: 1, type: "daily", dayClass: "day1", day: "W", precip: "15", tempHigh: "30", tempFeelHigh: "32", tempLow: "17", tempFeelLow: "15" }, { id: 2, type: "daily", dayClass: "day2", day: "T", precip: "10", tempHigh: "28", tempFeelHigh: "29", tempLow: "16", tempFeelLow: "15" }, { id: 3, type: "daily", dayClass: "day3", day: "F", precip: "25", tempHigh: "25", tempFeelHigh: "27", tempLow: "16", tempFeelLow: "14" }, { id: 4, type: "daily", dayClass: "day4", day: "S", precip: "20", tempHigh: "29", tempFeelHigh: "30", tempLow: "18", tempFeelLow: "16" }];
+
+	   var hourlyData = [{ id: 1, type: "hourly", dayClass: "day1", day: "14", precip: "15", tempHigh: "30", tempFeelHigh: "32", tempLow: "17", tempFeelLow: "15" }, { id: 2, type: "hourly", dayClass: "day2", day: "18", precip: "10", tempHigh: "28", tempFeelHigh: "29", tempLow: "16", tempFeelLow: "15" }, { id: 3, type: "hourly", dayClass: "day3", day: "22", precip: "25", tempHigh: "25", tempFeelHigh: "27", tempLow: "16", tempFeelLow: "14" }, { id: 4, type: "hourly", dayClass: "day4", day: "2", precip: "20", tempHigh: "29", tempFeelHigh: "30", tempLow: "18", tempFeelLow: "16" }];
+
+	   _reactDom2.default.render(_react2.default.createElement(_Main2.default, { dailyData: dailyData, hourlyData: hourlyData }), document.getElementById('wrapper'));
 	}
 
 /***/ },
@@ -19700,7 +19705,7 @@
 	            'div',
 	            { id: 'content', className: 'row' },
 	            _react2.default.createElement(_Current2.default, { source: 'localhost:8080' }),
-	            _react2.default.createElement(_Forecast2.default, null)
+	            _react2.default.createElement(_Forecast2.default, { dailyData: this.props.dailyData, hourlyData: this.props.hourlyData })
 	         )
 	      );
 	   }
@@ -36810,7 +36815,7 @@
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'p-header' },
-	            'Last updated 2:00pm'
+	            'Last updated 10:00am'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -46696,21 +46701,72 @@
 
 	var Forecast = _react2.default.createClass({
 	  displayName: 'Forecast',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      isHourly: true
+	    };
+	  },
+
+	  handleDailyClick: function handleDailyClick() {
+	    this.setState({ isHourly: false });
+	  },
+
+	  handleTodayClick: function handleTodayClick() {
+	    this.setState({ isHourly: true });
+	  },
+
 	  render: function render() {
+
+	    var dailyNodes = this.props.dailyData.map(function (daily) {
+	      return _react2.default.createElement(_Daily2.default, { key: daily.id, type: daily.type, dayClass: daily.dayClass, day: daily.day, precip: daily.precip, tempHigh: daily.tempHigh, tempFeelHigh: daily.tempFeelHigh, tempLow: daily.tempLow, tempFeelLow: daily.tempFeelLow });
+	    });
+
+	    var hourlyNodes = this.props.hourlyData.map(function (hourly) {
+	      return _react2.default.createElement(_Daily2.default, { key: hourly.id, type: hourly.type, dayClass: hourly.dayClass, day: hourly.day, precip: hourly.precip, tempHigh: hourly.tempHigh, tempFeelHigh: hourly.tempFeelHigh, tempLow: hourly.tempLow, tempFeelLow: hourly.tempFeelLow });
+	    });
+
 	    return _react2.default.createElement(
 	      'div',
 	      null,
 	      _react2.default.createElement(
 	        'div',
 	        { id: 'forecast', className: 'col-sm-5' },
-	        _react2.default.createElement(_HeaderForecast2.default, null),
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'header', className: 'row no-margin' },
+	          _react2.default.createElement(
+	            'div',
+	            { id: 'header-forecast', className: 'col-md-5 text-left' },
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'p-header' },
+	              _react2.default.createElement(
+	                'a',
+	                { onClick: this.handleTodayClick },
+	                'Today'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'p-header', id: 'p-divider' },
+	              '|'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'p-header' },
+	              _react2.default.createElement(
+	                'a',
+	                { onClick: this.handleDailyClick },
+	                'Next Days'
+	              )
+	            )
+	          )
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { id: 'content-forecast', className: 'no-gutter-mobile' },
-	          _react2.default.createElement(_Daily2.default, { day: 'day1' }),
-	          _react2.default.createElement(_Daily2.default, { day: 'day2' }),
-	          _react2.default.createElement(_Daily2.default, { day: 'day3' }),
-	          _react2.default.createElement(_Daily2.default, { day: 'day4' })
+	          this.state.isHourly ? hourlyNodes : dailyNodes
 	        )
 	      )
 	    );
@@ -46743,33 +46799,38 @@
 	  displayName: 'Daily',
 
 	  render: function render() {
-	    return _react2.default.createElement(
+
+	    var pmAm;
+	    var pDay = _react2.default.createElement(
+	      'p',
+	      { className: 'p-day' },
+	      this.props.day
+	    );
+	    var type = this.props.type;
+	    var day = this.props.day;
+	    var tempDiv = _react2.default.createElement(
 	      'div',
-	      { className: 'daily row col-xs-3 col-sm-12 no-gutter', id: this.props.day },
+	      { className: 'hour-temp col-sm-6 hourly-temp-margin' },
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'day col-sm-3 text-center' },
+	        { className: 'day-temp-h text-center' },
 	        _react2.default.createElement(
 	          'p',
-	          { className: 'p-day' },
-	          'W'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'day-icon col-sm-3 text-center' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'img-daily-wrapper' },
-	          _react2.default.createElement('img', { className: 'img-daily', src: 'https://api.icons8.com/download/02b49eb213f67d9fb2c8753c368b275d2ef4c1c8/Color/PNG/512/Weather/sun-512.png', title: 'Sun' })
+	          { className: 'p-temp display-inline' },
+	          this.props.tempHigh
 	        ),
 	        _react2.default.createElement(
 	          'p',
-	          null,
-	          '10%'
+	          { className: 'p-temp display-inline p-temp-feel' },
+	          '(',
+	          this.props.tempFeelHigh,
+	          ')'
 	        )
-	      ),
-	      _react2.default.createElement(
+	      )
+	    );
+	    if (type == "daily") {
+	      pmAm = "";
+	      tempDiv = _react2.default.createElement(
 	        'div',
 	        { className: 'day-temp col-sm-6' },
 	        _react2.default.createElement(
@@ -46783,12 +46844,14 @@
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'p-temp display-inline' },
-	            '27'
+	            this.props.tempHigh
 	          ),
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'p-temp display-inline p-temp-feel' },
-	            '(28)'
+	            '(',
+	            this.props.tempFeelHigh,
+	            ')'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -46802,15 +46865,67 @@
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'p-temp display-inline' },
-	            '21'
+	            this.props.tempLow
 	          ),
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'p-temp display-inline p-temp-feel' },
-	            '(19)'
+	            '(',
+	            this.props.tempFeelLow,
+	            ')'
 	          )
 	        )
-	      )
+	      );
+	    } else if (day > 12) {
+	      day = day - 12;
+	      pDay = _react2.default.createElement(
+	        'p',
+	        { className: 'p-day p-hour-margin' },
+	        day
+	      );
+	      pmAm = _react2.default.createElement(
+	        'p',
+	        null,
+	        'PM'
+	      );
+	    } else {
+	      pDay = _react2.default.createElement(
+	        'p',
+	        { className: 'p-day p-hour-margin' },
+	        day
+	      );
+	      pmAm = _react2.default.createElement(
+	        'p',
+	        null,
+	        'AM'
+	      );
+	    }
+
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'daily row col-xs-3 col-sm-12 no-gutter', id: this.props.dayClass },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'day col-sm-3 text-center' },
+	        pDay,
+	        pmAm
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'day-icon col-sm-3 text-center' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'img-daily-wrapper' },
+	          _react2.default.createElement('img', { className: 'img-daily', src: 'https://api.icons8.com/download/02b49eb213f67d9fb2c8753c368b275d2ef4c1c8/Color/PNG/512/Weather/sun-512.png', title: 'Sun' })
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          this.props.precip,
+	          '%'
+	        )
+	      ),
+	      tempDiv
 	    );
 	  }
 	});
@@ -46978,7 +47093,7 @@
 
 
 	// module
-	exports.push([module.id, "/*\n\nCOLORS{\n   main: #33495f\n   day1: #6b7e90;\n   day2: #496076\n   day3: #1f374e\n   day4: #0f253a\n}\n\n*/\n.no-margin{\n   margin: 0;\n}\n\n.display-inline{\n   display: inline;\n}\n\nhtml, body, #wrapper, #main{\n   width: 100%;\n   height: 100%;\n   margin: 0;\n   color: #ffffff;\n   background-color: #33495f;\n}\n\n#main{\n   padding-left: 0px;\n   padding-right: 0px;\n}\n\n#header{\n   width: 100%;\n   height: 40px;\n   margin: 0;\n   /*background-color: #33495f;*/\n}\n\n#header-current > div{\n   padding: 0;\n}\n\n.p-header{\n   font-weight: 100;\n   letter-spacing: 1px;\n   padding: 12px;\n   font-size: 12px;\n   margin-bottom: 0;\n}\n\n#header-forecast{\n   padding-top: 9px;\n}\n\n#header-forecast > p {display: inline;}\n\n#p-divider{padding-left: 0; padding-right:0;}\n\n#content{\n   width: 100%;\n   margin: 0;\n/*   position: absolute;\n   top: 40px;*/\n   height: 100vh;\n   bottom: 0;\n   overflow: auto;\n}\n\n#current{\n   background-color: #33495f;\n   height: 100vh;\n   text-align: center;\n}\n\n#content-current{\n   height: calc(100vh - 40px);\n}\n\n.precip-curr {font-size: 18px; margin-top: -10px;}\n.temp-curr {font-size: 50px; margin-top: 50px;}\n.feels-curr {font-size: 16px; font-weight: 100; letter-spacing: 1px;}\n.app-temp-curr {font-size: 50px;}\n.quote-curr {font-size: 35px; font-weight: 100; font-style: italic; letter-spacing: 2px; margin-top: 50px;}\n\n#icon-current{\n   height: 200px;\n   width: 200px;\n}\n\n\n/****** Forecast *****/\n#forecast{\n   background-color: #6b7e90;\n   height: 100vh;\n   padding: 0;\n}\n\n#content-forecast{\n   height: calc(100vh - 40px);\n}\n\n.daily{\n   width: 100%;\n   height: 25%;\n   min-height: 158px;\n   margin: 0;\n   padding-left: 30px;\n}\n\n.p-day{\n   font-size: 45px;\n   margin-top: 45px;\n}\n\n.day-icon{ padding-top: 25px; }\n\n.img-daily{ \n   width: 80px; \n   /* http://stackoverflow.com/questions/29439321/horizontally-align-image-thats-bigger-than-its-parent-div */\n   display: block;\n   margin: auto;\n   max-width: none;\n   position: absolute;\n   left: 50%;\n   -webkit-transform: translateX(-50%);\n   transform: translateX(-50%);\n}\n\n.img-daily-wrapper{\n   height: 80px;\n}\n\n.p-temp{\n   font-weight: 100;\n   font-size: 22px;\n   letter-spacing: 1px;\n   padding: 10px;\n}\n\n.p-temp-hl{\n   font-weight: 400;\n}\n\n/*.p-temp-feel{\n   font-size: 20px;\n}\n*/\n.day-temp-h, .day-temp-l{\n   margin-top: 32px;\n   padding-right: 22px;\n}\n\n#day1 {background-color: #6b7e90; margin:0;}\n#day2 {background-color: #496076; margin:0;}\n#day3 {background-color: #1f374e; margin:0;}\n#day4 {background-color: #0f253a; margin:0;}\n\n.no-gutter > [class*='col-'] {\n    padding-right:0;\n    padding-left:0;\n}\n\n\n@media screen and (max-width: 768px) {\n   .daily {\n      height: 100%;\n   }\n\n   .img-daily{\n      width: 60px;\n   }\n   .img-daily-wrapper{\n      height: 60x;\n   }\n   #forecast {height: 75vh;}\n   #content-forecast {height: calc(75vh - 40px);}\n   .p-day{font-size: 35px;}\n   .p-temp{\n      font-size: 14px;\n      padding: 3px;\n   }\n   .day-temp-h, .day-temp-l{\n      padding-right: 0px;\n   }\n\n   .no-gutter-mobile > [class*='col-'] {\n   padding-right:0;\n    padding-left:0; \n}\n}", ""]);
+	exports.push([module.id, "/*\n\nCOLORS{\n   main: #33495f\n   day1: #6b7e90;\n   day2: #496076\n   day3: #1f374e\n   day4: #0f253a\n}\n\n*/\n.no-margin{\n   margin: 0;\n}\n\n.display-inline{\n   display: inline;\n}\n\nhtml, body, #wrapper, #main{\n   width: 100%;\n   height: 100%;\n   margin: 0;\n   color: #ffffff;\n   background-color: #33495f;\n}\n\n#main{\n   padding-left: 0px;\n   padding-right: 0px;\n}\n\n#header{\n   width: 100%;\n   height: 40px;\n   margin: 0;\n   /*background-color: #33495f;*/\n}\n\n#header-current > div{\n   padding: 0;\n}\n\n.p-header{\n   font-weight: 100;\n   letter-spacing: 1px;\n   padding: 12px;\n   font-size: 12px;\n   margin-bottom: 0;\n}\n\n.p-header > a{\n   color: inherit;\n}\n\n.p-header > a:hover{\n   cursor: pointer;\n}\n\n#header-forecast{\n   padding-top: 9px;\n}\n\n#header-forecast > p {display: inline;}\n\n#p-divider{padding-left: 0; padding-right:0;}\n\n#content{\n   width: 100%;\n   margin: 0;\n/*   position: absolute;\n   top: 40px;*/\n   height: 100vh;\n   bottom: 0;\n   overflow: auto;\n}\n\n#current{\n   background-color: #33495f;\n   height: 100vh;\n   text-align: center;\n}\n\n#content-current{\n   height: calc(100vh - 40px);\n}\n\n.precip-curr {font-size: 18px; margin-top: -10px;}\n.temp-curr {font-size: 50px; margin-top: 50px;}\n.feels-curr {font-size: 16px; font-weight: 100; letter-spacing: 1px;}\n.app-temp-curr {font-size: 50px;}\n.quote-curr {font-size: 35px; font-weight: 100; font-style: italic; letter-spacing: 2px; margin-top: 50px;}\n\n#icon-current{\n   height: 200px;\n   width: 200px;\n}\n\n\n/****** Forecast *****/\n#forecast{\n   background-color: #6b7e90;\n   height: 100vh;\n   padding: 0;\n}\n\n#content-forecast{\n   height: calc(100vh - 40px);\n}\n\n.daily{\n   width: 100%;\n   height: 25%;\n   min-height: 158px;\n   margin: 0;\n   padding-left: 30px;\n}\n\n.p-day{\n   font-size: 45px;\n   margin-top: 45px;\n   margin-bottom: 0px;\n}\n\n.p-hour-margin{\n   margin-top: 35px;\n}\n\n.day-icon{ padding-top: 25px; }\n\n.img-daily{ \n   width: 80px; \n   /* http://stackoverflow.com/questions/29439321/horizontally-align-image-thats-bigger-than-its-parent-div */\n   display: block;\n   margin: auto;\n   max-width: none;\n   position: absolute;\n   left: 50%;\n   -webkit-transform: translateX(-50%);\n   transform: translateX(-50%);\n}\n\n.img-daily-wrapper{\n   height: 80px;\n}\n\n.p-temp{\n   font-weight: 100;\n   font-size: 22px;\n   letter-spacing: 1px;\n   padding: 10px;\n}\n\n.p-temp-hl{\n   font-weight: 400;\n}\n\n/*.p-temp-feel{\n   font-size: 20px;\n}\n*/\n.day-temp-h, .day-temp-l{\n   margin-top: 32px;\n   padding-right: 22px;\n}\n\n.hour-temp{\n   margin-top: 30px;\n}\n\n#day1 {background-color: #6b7e90; margin:0;}\n#day2 {background-color: #496076; margin:0;}\n#day3 {background-color: #1f374e; margin:0;}\n#day4 {background-color: #0f253a; margin:0;}\n\n.no-gutter > [class*='col-'] {\n    padding-right:0;\n    padding-left:0;\n}\n\n.text-bold{\n   font-weight: 200;\n}\n\n.text-regular{\n   font-weight: 100;\n}\n\n@media screen and (max-width: 768px) {\n   .daily {\n      height: 100%;\n   }\n\n   .img-daily{\n      width: 60px;\n   }\n   .img-daily-wrapper{\n      height: 60x;\n   }\n   #forecast {height: 75vh;}\n   #content-forecast {height: calc(75vh - 40px);}\n   .p-day{font-size: 35px;}\n   .p-temp{\n      font-size: 14px;\n      padding: 3px;\n   }\n   .day-temp-h, .day-temp-l{\n      padding-right: 0px;\n   }\n\n   .no-gutter-mobile > [class*='col-'] {\n   padding-right:0;\n    padding-left:0; \n}\n}", ""]);
 
 	// exports
 

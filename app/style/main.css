@@ -49,6 +49,14 @@ html, body, #wrapper, #main{
    margin-bottom: 0;
 }
 
+.p-header > a{
+   color: inherit;
+}
+
+.p-header > a:hover{
+   cursor: pointer;
+}
+
 #header-forecast{
    padding-top: 9px;
 }
@@ -111,6 +119,11 @@ html, body, #wrapper, #main{
 .p-day{
    font-size: 45px;
    margin-top: 45px;
+   margin-bottom: 0px;
+}
+
+.p-hour-margin{
+   margin-top: 35px;
 }
 
 .day-icon{ padding-top: 25px; }
@@ -151,6 +164,10 @@ html, body, #wrapper, #main{
    padding-right: 22px;
 }
 
+.hour-temp{
+   margin-top: 30px;
+}
+
 #day1 {background-color: #6b7e90; margin:0;}
 #day2 {background-color: #496076; margin:0;}
 #day3 {background-color: #1f374e; margin:0;}
@@ -161,6 +178,13 @@ html, body, #wrapper, #main{
     padding-left:0;
 }
 
+.text-bold{
+   font-weight: 200;
+}
+
+.text-regular{
+   font-weight: 100;
+}
 
 @media screen and (max-width: 768px) {
    .daily {

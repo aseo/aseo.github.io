@@ -10,7 +10,7 @@ var Main = React.createClass ({
          <div id="main" className="container-fluid">
             <div id="content" className="row">
                <Current source="localhost:8080" />
-               <Forecast />
+               <Forecast dailyData={this.props.dailyData} hourlyData={this.props.hourlyData}/>
             </div>
          </div>
       );
